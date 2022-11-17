@@ -146,13 +146,19 @@ body {
   justify-content: center;
   max-width: 400px;
   width: 100%;
-  transform: translate(-50%, -50%);
-}
 
+  transform: translate(-50%, -50%);
+  transition: all 0.25 ease;
+}
 .popup-box,
 .popup-box .popup {
   opacity: 0;
   pointer-events: none;
+}
+.popup-box.show,
+.popup-box.show .popup {
+  opacity: 1;
+  pointer-events: auto;
 }
 .popup .content {
   background: #fff;
