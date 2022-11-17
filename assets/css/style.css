@@ -86,19 +86,42 @@ body {
 .settings .menu {
   position: absolute;
   bottom: 0;
+  left: -85px;
   border-radius: 4px;
   padding: 5px 0;
   background: #fff;
+  transform: scale(0);
+  transform-origin: bottom-right;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+.settings:hover .menu {
+  transform: scale(1);
 }
 .settings .menu li {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  /* padding: 5px 0; */
   height: 100%;
+
+  font-size: 16px;
   background: #f5f5f5;
   border-radius: 0;
 }
-.menu li i {
-  padding-right: 8px;
+.icon1 {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.icon1:hover,
+.icon2:hover {
+  font-size: 18px;
+  color: #575757;
+}
+.icon2 {
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
 }
