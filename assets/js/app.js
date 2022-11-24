@@ -7,7 +7,7 @@ addBtn = popupBox.querySelector("button")
 
 const months = ["January", "Februrary", "March", "April", "May", "June", "July",
                 "August", "September", "October", "November", "December" ]
-
+ const notes = JSON.parse(localStorage.getItem("notes") || "[]")
 addBox.addEventListener("click", () => {
     popupBox.classList.add("show")
 })
@@ -32,7 +32,9 @@ addBtn .addEventListener('click', e => {
             title: noteTitle, description: noteDesc,
             date: `{month} ${day}, ${year}`
         }
-    const notes = [];
     notes.push(noteInfo);
+    //saving notes to Localstorage
+    localStorage.setItem("notes", JSON.stringify(notes));
+    closeIcon.click()
     }
 })
