@@ -32,6 +32,7 @@ addBtn .addEventListener('click', e => {
             title: noteTitle, description: noteDesc,
             date: `{month} ${day}, ${year}`
         }
-    console.log(noteInfo)
+    const notes = [];
+    notes.push(noteInfo);
     }
 })
