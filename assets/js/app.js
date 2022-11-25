@@ -59,6 +59,9 @@ function showMenu(elem) {
 
 function deleteNote(noteId) {
   notes.splice(noteId, 1);
+
+  //saving notes to Localstorage
+    localStorage.setItem("notes", JSON.stringify(notes));
 }
 addBtn .addEventListener('click', e => {
     e.preventDefault();
