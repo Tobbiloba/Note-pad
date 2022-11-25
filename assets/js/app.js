@@ -13,6 +13,8 @@ addBox.addEventListener("click", () => {
 })
 
 closeIcon.addEventListener("click", () => {
+    titleTag.value = "";
+    descTag.value = "";
     popupBox.classList.remove("show")
 })
 
