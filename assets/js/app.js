@@ -21,7 +21,7 @@ closeIcon.addEventListener("click", () => {
 
 function showNotes() {
     document.querySelectorAll(".note").forEach(note => note.remove())
-    notes.forEach((note) => {
+    notes.forEach((note, index) => {
         let liTag = `<li class="note">
         <div class="details">
           <p>${note.title}</p>
@@ -36,6 +36,8 @@ function showNotes() {
             <ul class="menu">
               <li>
                 <i class="ri-pencil-line icon1">Edit</i>
+              </li>
+              <li onclick="deleteNote(${index})">
                 <i class="ri-delete-bin-6-line icon2">Delete</i>
               </li>
             </ul>
@@ -48,11 +50,15 @@ showNotes();
 
 function showMenu(elem) {
     elem.parentElement.classList.add("show")
-    document.addEventListener("click", e => {
+    document.addEventListener("click", e => { 
         if(e.target.tagName != "I" || e.target != elem){
             elem.parentElement.classList.remove("show")
         }
     })
+}
+
+function deleteNote(noteId) {
+  notes.splice(noteId, 1);
 }
 addBtn .addEventListener('click', e => {
     e.preventDefault();
