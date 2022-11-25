@@ -18,18 +18,17 @@ closeIcon.addEventListener("click", () => {
 
 
 function showNotes() {
+    document.querySelectorAll(".note").forEach(note => note.remove())
     notes.forEach((note) => {
         let liTag = `<li class="note">
         <div class="details">
-          <p>This is the Title</p>
+          <p>${note.title}</p>
           <span>
-            lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-            commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-            penatibus et magnis dis parturient montes
+            ${note.description}
           </span>
         </div>
         <div class="bottom-content">
-          <span>April 3, 2002</span>
+          <span>${note.date}</span>
           <div class="settings">
             <i class="ri-more-line"></i>
             <ul class="menu">
@@ -58,11 +57,12 @@ addBtn .addEventListener('click', e => {
 
         let noteInfo = {
             title: noteTitle, description: noteDesc,
-            date: `{month} ${day}, ${year}`
+            date: `${month} ${day}, ${year}`
         }
     notes.push(noteInfo);
     //saving notes to Localstorage
     localStorage.setItem("notes", JSON.stringify(notes));
     closeIcon.click()
+    showNotes()
     }
 })
