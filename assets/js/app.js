@@ -9,12 +9,14 @@ addBtn = popupBox.querySelector("button")
 const months = ["January", "Februrary", "March", "April", "May", "June", "July",
                 "August", "September", "October", "November", "December" ]
  const notes = JSON.parse(localStorage.getItem("notes") || "[]")
+ let isUpdate = false, updateId;
 addBox.addEventListener("click", () => {
   titleTag.focus();
     popupBox.classList.add("show")
 })
 
 closeIcon.addEventListener("click", () => {
+  isUpdate = false;
     titleTag.value = "";
     descTag.value = "";
      addBtn.innerText = "Add Note";
@@ -62,6 +64,8 @@ function showMenu(elem) {
 }
 
 function deleteNote(noteId) {
+  let confirmDel = confirm("Are you sure you want to delete this note??")
+  if(!confirmDel) return;
   notes.splice(noteId, 1);
 
   //saving notes to Localstorage
@@ -71,6 +75,8 @@ function deleteNote(noteId) {
 }
 
 function updateNote(noteId, title, desc) {
+  isUpdate = true;
+  updateId = noteId;
   addBox.click();
   titleTag.value = title;
   descTag.value = desc;
@@ -95,7 +101,13 @@ addBtn .addEventListener('click', e => {
             title: noteTitle, description: noteDesc,
             date: `${month} ${day}, ${year}`
         }
-    notes.push(noteInfo);
+        if(!isUpdate) {
+          notes.push(noteInfo);
+        }
+        else {
+          isUpdate = false;
+          notes[updateId] = noteInfo; // updating specifies note
+        }
     //saving notes to Localstorage
     localStorage.setItem("notes", JSON.stringify(notes));
     closeIcon.click()
