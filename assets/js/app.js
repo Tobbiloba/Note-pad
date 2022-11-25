@@ -1,5 +1,6 @@
 const addBox = document.querySelector(".add-box"),
 popupBox = document.querySelector(".popup-box"),
+popupTitle = popupBox.querySelector("header p"),
 closeIcon = popupBox.querySelector("header i")
 titleTag = popupBox.querySelector("input")
 descTag = popupBox.querySelector("textarea")
@@ -9,12 +10,15 @@ const months = ["January", "Februrary", "March", "April", "May", "June", "July",
                 "August", "September", "October", "November", "December" ]
  const notes = JSON.parse(localStorage.getItem("notes") || "[]")
 addBox.addEventListener("click", () => {
+  titleTag.focus();
     popupBox.classList.add("show")
 })
 
 closeIcon.addEventListener("click", () => {
     titleTag.value = "";
     descTag.value = "";
+     addBtn.innerText = "Add Note";
+  popupTitle.innerText = "Add a new Note";
     popupBox.classList.remove("show")
 })
 
@@ -34,7 +38,7 @@ function showNotes() {
           <div class="settings">
             <i onclick="showMenu(this)" class="ri-more-line"></i>
             <ul class="menu">
-              <li>
+              <li onclick="updateNote(${index}, '${note.title}', '${note.description}')">
                 <i class="ri-pencil-line icon1">Edit</i>
               </li>
               <li onclick="deleteNote(${index})">
@@ -64,6 +68,16 @@ function deleteNote(noteId) {
     localStorage.setItem("notes", JSON.stringify(notes));
 
     showNotes();
+}
+
+function updateNote(noteId, title, desc) {
+  addBox.click();
+  titleTag.value = title;
+  descTag.value = desc;
+  addBtn.innerText = "Update Note";
+  popupTitle.innerText = "Update Note";
+
+  console.log(noteId, title, desc)
 }
 addBtn .addEventListener('click', e => {
     e.preventDefault();
