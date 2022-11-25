@@ -97,7 +97,7 @@ body {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s ease;
 }
-.settings:hover .menu {
+.settings.show .menu {
   transform: scale(1);
 }
 .settings .menu li {

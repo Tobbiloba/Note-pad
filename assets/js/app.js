@@ -32,7 +32,7 @@ function showNotes() {
         <div class="bottom-content">
           <span>${note.date}</span>
           <div class="settings">
-            <i class="ri-more-line"></i>
+            <i onclick="showMenu(this)" class="ri-more-line"></i>
             <ul class="menu">
               <li>
                 <i class="ri-pencil-line icon1">Edit</i>
@@ -45,6 +45,15 @@ function showNotes() {
     })
 }
 showNotes();
+
+function showMenu(elem) {
+    elem.parentElement.classList.add("show")
+    document.addEventListener("click", e => {
+        if(e.target.tagName != "I" || e.target != elem){
+            elem.parentElement.classList.remove("show")
+        }
+    })
+}
 addBtn .addEventListener('click', e => {
     e.preventDefault();
     let noteTitle = titleTag.value;
