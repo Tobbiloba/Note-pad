@@ -62,6 +62,8 @@ function deleteNote(noteId) {
 
   //saving notes to Localstorage
     localStorage.setItem("notes", JSON.stringify(notes));
+
+    showNotes();
 }
 addBtn .addEventListener('click', e => {
     e.preventDefault();
