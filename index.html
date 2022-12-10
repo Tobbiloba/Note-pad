@@ -11,6 +11,10 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>Note Pad</title>
   </head>
@@ -20,7 +24,7 @@
         <div class="content">
           <header>
             <p>Add new note</p>
-            <i class="ri-close-line"></i>
+            <i class="ri-close-line close-icn"></i>
           </header>
 
           <form action="#">
@@ -31,9 +35,18 @@
 
             <div class="row description">
               <label>Description</label>
-              <textarea></textarea>
+              <textarea spellcheck="true"></textarea>
             </div>
-
+            <div class="count">
+              <h3 class="about_word-count">
+                Word Count:
+                <span></span>
+              </h3>
+              <h3 class="about_word-count">
+                Character Count:
+                <span></span>
+              </h3>
+            </div>
             <button>Add Note</button>
           </form>
         </div>
@@ -47,7 +60,31 @@
         <p>Add new note</p>
       </li>
     </div>
-
+    <div class="about" data-aos="fade-up" data-aos-duration="9000">
+      <i
+        class="ri-close-circle-fill about-close-icon"
+        onclick="aboutCloseIcon()"
+      ></i>
+      <div class="about__info">
+        <h3 class="about__infos">
+          Character Count:
+          <span class="about__span"></span>
+        </h3>
+        <h3 class="about__infos">
+          Word Count:
+          <span class="about__span"></span>
+        </h3>
+        <h3 class="about__infos">
+          Encrypt:
+          <span class="about__span"></span>
+        </h3>
+        <h3 class="about__infos">
+          Date:
+          <span class="about__span"></span>
+        </h3>
+      </div>
+    </div>
     <script src="assets/js/app.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </body>
 </html>
